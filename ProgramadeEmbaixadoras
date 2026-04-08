@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Embaixadoras Amávia</title>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  :root{
+    --rosa:#2ABFAA;
+    --rosa-claro:#E0F7F4;
+    --rosa-medio:#9FE1D8;
+    --rosa-escuro:#063D36;
+    --bege:#F2FAFA;
+    --texto:#2C2C2A;
+    --texto-sec:#5F5E5A;
+    --branco:#fff;
+    --borda:#C0E8E4;
+    --verde:#0F6E56;
+    --verde-claro:#E1F5EE;
+  }
+  body{font-family:'Segoe UI',sans-serif;color:var(--texto);background:var(--branco);font-size:16px;line-height:1.6}
+  
+  /* HERO */
+  .hero{background:linear-gradient(135deg,#FBEAF0 0%,#FAF8F5 50%,#F4C0D1 100%);padding:80px 24px 60px;text-align:center;position:relative;overflow:hidden}
+  .hero::before{content:'';position:absolute;top:-80px;right:-80px;width:300px;height:300px;border-radius:50%;background:rgba(212,83,126,0.08)}
+  .hero::after{content:'';position:absolute;bottom:-60px;left:-60px;width:200px;height:200px;border-radius:50%;background:rgba(212,83,126,0.06)}
+  .badge{display:inline-block;background:var(--rosa);color:#fff;font-size:12px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;padding:6px 16px;border-radius:20px;margin-bottom:20px}
+  .hero h1{font-size:clamp(32px,5vw,56px);font-weight:700;color:var(--rosa-escuro);line-height:1.15;max-width:700px;margin:0 auto 20px}
+  .hero h1 span{color:var(--rosa)}
+  .hero p{font-size:18px;color:var(--texto-sec);max-width:560px;margin:0 auto 36px}
+  .btn-primary{display:inline-block;background:var(--rosa);color:#fff;font-size:16px;font-weight:600;padding:16px 40px;border-radius:50px;text-decoration:none;transition:transform .2s,box-shadow .2s}
+  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(212,83,126,0.35)}
+  .btn-outline{display:inline-block;border:2px solid var(--rosa);color:var(--rosa);font-size:15px;font-weight:600;padding:14px 32px;border-radius:50px;text-decoration:none;margin-left:12px;transition:all .2s}
+  .btn-outline:hover{background:var(--rosa);color:#fff}
+
+  /* STATS */
+  .stats{background:var(--branco);padding:48px 24px;border-bottom:1px solid var(--borda)}
+  .stats-inner{max-width:900px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:24px;text-align:center}
+  .stat-num{font-size:36px;font-weight:700;color:var(--rosa);line-height:1}
+  .stat-label{font-size:14px;color:var(--texto-sec);margin-top:6px}
+
+  /* COMO FUNCIONA */
+  .section{padding:72px 24px;max-width:1000px;margin:0 auto}
+  .section-label{font-size:12px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--rosa);margin-bottom:12px}
+  .section-title{font-size:clamp(24px,3.5vw,36px);font-weight:700;color:var(--rosa-escuro);margin-bottom:48px;max-width:560px}
+  .steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:32px}
+  .step{text-align:center;padding:32px 24px;background:var(--bege);border-radius:20px;border:1px solid var(--borda);position:relative}
+  .step-num{width:48px;height:48px;border-radius:50%;background:var(--rosa);color:#fff;font-size:18px;font-weight:700;display:flex;align-items:center;justify-content:center;margin:0 auto 20px}
+  .step h3{font-size:17px;font-weight:600;color:var(--rosa-escuro);margin-bottom:10px}
+  .step p{font-size:14px;color:var(--texto-sec)}
+
+  /* BENEFÍCIOS */
+  .benefits-bg{background:var(--bege);padding:72px 24px}
+  .benefits-inner{max-width:1000px;margin:0 auto}
+  .benefits-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:24px;margin-top:0}
+  .benefit-card{background:var(--branco);border:1px solid var(--borda);border-radius:16px;padding:28px 24px}
+  .benefit-icon{width:44px;height:44px;border-radius:12px;background:var(--rosa-claro);display:flex;align-items:center;justify-content:center;margin-bottom:16px;font-size:20px}
+  .benefit-card h3{font-size:16px;font-weight:600;color:var(--rosa-escuro);margin-bottom:8px}
+  .benefit-card p{font-size:14px;color:var(--texto-sec);line-height:1.6}
+
+  /* DESTAQUE PRODUTO */
+  .highlight{background:var(--rosa);color:#fff;padding:60px 24px;text-align:center}
+  .highlight h2{font-size:clamp(24px,3.5vw,38px);font-weight:700;margin-bottom:16px}
+  .highlight p{font-size:17px;opacity:.9;max-width:520px;margin:0 auto 32px}
+  .btn-white{display:inline-block;background:#fff;color:var(--rosa);font-size:16px;font-weight:700;padding:16px 40px;border-radius:50px;text-decoration:none;transition:transform .2s}
+  .btn-white:hover{transform:translateY(-2px)}
+
+  /* REQUISITOS */
+  .reqs{padding:72px 24px;max-width:900px;margin:0 auto}
+  .req-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;margin-top:8px}
+  .req-item{display:flex;align-items:flex-start;gap:14px;padding:20px;background:var(--branco);border:1px solid var(--borda);border-radius:14px}
+  .req-dot{width:10px;height:10px;border-radius:50%;background:var(--rosa);margin-top:6px;flex-shrink:0}
+  .req-item p{font-size:15px;color:var(--texto)}
+
+  /* FORMULÁRIO */
+  .form-section{background:var(--bege);padding:72px 24px}
+  .form-inner{max-width:640px;margin:0 auto}
+  .form-title{font-size:clamp(22px,3vw,32px);font-weight:700;color:var(--rosa-escuro);margin-bottom:8px}
+  .form-subtitle{font-size:16px;color:var(--texto-sec);margin-bottom:40px}
+  .form-group{margin-bottom:20px}
+  .form-group label{display:block;font-size:14px;font-weight:600;color:var(--texto);margin-bottom:8px}
+  .form-group input,.form-group select,.form-group textarea{
+    width:100%;padding:14px 16px;border:1.5px solid var(--borda);border-radius:12px;
+    font-size:15px;color:var(--texto);background:var(--branco);outline:none;transition:border-color .2s;font-family:inherit
+  }
+  .form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:var(--rosa)}
+  .form-group textarea{resize:vertical;min-height:100px}
+  .form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  .form-btn{width:100%;background:var(--rosa);color:#fff;font-size:16px;font-weight:700;padding:16px;border-radius:50px;border:none;cursor:pointer;margin-top:8px;transition:transform .2s,box-shadow .2s;font-family:inherit}
+  .form-btn:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(212,83,126,0.35)}
+  .form-note{font-size:13px;color:var(--texto-sec);text-align:center;margin-top:16px}
+
+  /* FOOTER */
+  footer{background:var(--rosa-escuro);color:#fff;padding:32px 24px;text-align:center}
+  footer p{font-size:14px;opacity:.7}
+  footer strong{opacity:1;font-weight:600}
+
+  /* SUCCESS */
+  .success-msg{display:none;background:var(--verde-claro);border:1px solid #C0DD97;border-radius:14px;padding:24px;text-align:center;margin-top:24px}
+  .success-msg p{color:var(--verde);font-weight:600;font-size:16px}
+
+  @media(max-width:600px){
+    .btn-outline{display:block;margin:12px auto 0;width:fit-content}
+    .form-row{grid-template-columns:1fr}
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="badge">Programa de Embaixadoras</div>
+  <h1>Cresça nas redes sociais com a <span>Amávia</span></h1>
+  <p>Receba produtos todo mês, crie conteúdo autêntico e faça parte de uma comunidade de criadoras.</p>
+  <a href="#inscricao" class="btn-primary">Quero ser embaixadora</a>
+  <a href="#como-funciona" class="btn-outline">Saiba mais</a>
+</section>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="stats-inner">
+    <div>
+      <div class="stat-num">R$200</div>
+      <div class="stat-label">em produtos por mês</div>
+    </div>
+    <div>
+      <div class="stat-num">100%</div>
+      <div class="stat-label">gratuito para participar</div>
+    </div>
+    <div>
+      <div class="stat-num">+500</div>
+      <div class="stat-label">embaixadoras ativas</div>
+    </div>
+    <div>
+      <div class="stat-num">∞</div>
+      <div class="stat-label">visibilidade para o seu perfil</div>
+    </div>
+  </div>
+</div>
+
+<!-- COMO FUNCIONA -->
+<section class="section" id="como-funciona">
+  <div class="section-label">Passo a passo</div>
+  <div class="section-title">Como funciona o programa?</div>
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">1</div>
+      <h3>Inscreva-se</h3>
+      <p>Preencha o formulário abaixo e aguarde nossa aprovação. Analisamos todos os perfis com carinho.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <h3>Receba os produtos</h3>
+      <p>Todo mês você recebe R$200 em produtos Amávia selecionados para o seu perfil e nicho.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <h3>Crie conteúdo</h3>
+      <p>Use os produtos no seu dia a dia e compartilhe sua experiência autêntica nas redes sociais.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">4</div>
+      <h3>Ganhe visibilidade</h3>
+      <p>Os melhores conteúdos são repostados no perfil oficial da Amávia, ampliando seu alcance.</p>
+    </div>
+  </div>
+</section>
+
+<!-- BENEFÍCIOS -->
+<div class="benefits-bg">
+  <div class="benefits-inner">
+    <div class="section-label">Benefícios</div>
+    <div class="section-title">O que você ganha sendo embaixadora</div>
+    <div class="benefits-grid">
+      <div class="benefit-card">
+        <div class="benefit-icon">🎁</div>
+        <h3>Produtos mensais</h3>
+        <p>Receba uma curadoria de R$200 em produtos para testar, usar e contar para a sua audiência.</p>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-icon">📱</div>
+        <h3>Crescimento digital</h3>
+        <p>Desenvolva sua habilidade de criação de conteúdo com suporte e orientação da Amávia.</p>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-icon">🤝</div>
+        <h3>Collab no perfil oficial</h3>
+        <p>Seus melhores conteúdos podem virar collab no @amaviabr, levando sua marca a novas pessoas.</p>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-icon">💜</div>
+        <h3>Comunidade exclusiva</h3>
+        <p>Faça parte de um grupo de criadoras que se apoiam, trocam ideias e crescem juntas.</p>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-icon">✨</div>
+        <h3>Conexão com a marca</h3>
+        <p>Acesso antecipado a lançamentos, participação em campanhas e voz ativa no desenvolvimento de produtos.</p>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-icon">🚀</div>
+        <h3>Sem investimento</h3>
+        <p>Não há pagamento em dinheiro envolvido — é uma troca genuína de valor entre criadora e marca.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- DESTAQUE -->
+<div class="highlight">
+  <h2>R$200 em produtos todo mês, para você.</h2>
+  <p>Sem necessidade de comprar nada. Só compartilhar sua experiência real com os produtos Amávia.</p>
+  <a href="#inscricao" class="btn-white">Quero participar agora</a>
+</div>
+
+<!-- REQUISITOS -->
+<section class="reqs">
+  <div class="section-label">Requisitos</div>
+  <div class="section-title">Quem pode participar?</div>
+  <div class="req-grid">
+    <div class="req-item"><div class="req-dot"></div><p>Ter perfil ativo no Instagram ou TikTok</p></div>
+    <div class="req-item"><div class="req-dot"></div><p>Publicar conteúdo com regularidade</p></div>
+    <div class="req-item"><div class="req-dot"></div><p>Ter afinidade com beleza, autocuidado ou lifestyle</p></div>
+    <div class="req-item"><div class="req-dot"></div><p>Ser autêntica e comprometida com sua audiência</p></div>
+    <div class="req-item"><div class="req-dot"></div><p>Não há requisito mínimo de seguidores</p></div>
+    <div class="req-item"><div class="req-dot"></div><p>Comprometer-se a criar ao menos 2 posts/mês</p></div>
+  </div>
+</section>
+
+<!-- FORMULÁRIO -->
+<section class="form-section" id="inscricao">
+  <div class="form-inner">
+    <div class="section-label">Inscrição</div>
+    <div class="form-title">Quero ser embaixadora Amávia</div>
+    <div class="form-subtitle">Preencha seus dados e entraremos em contato em até 5 dias úteis.</div>
+    <div style="border-radius:16px;overflow:hidden;border:1px solid var(--borda);margin-top:8px">
+      <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfEIwT8aCRzFM3YJLQtVjXlRvbMfbTP7Yl96ugL81IJbP7_Bg/viewform?embedded=true" width="100%" height="2252" frameborder="0" marginheight="0" marginwidth="0" style="display:block">Carregando…</iframe>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p><strong>Amávia</strong> — Programa de Embaixadoras</p>
+  <p style="margin-top:8px">dúvidas? fale com a gente pelo Instagram @amaviabr</p>
+</footer>
+
+<script>
+  function enviar(){
+    const nome=document.getElementById('nome').value.trim();
+    const email=document.getElementById('email').value.trim();
+    const tel=document.getElementById('tel').value.trim();
+    const insta=document.getElementById('insta').value.trim();
+    if(!nome||!email||!tel||!insta){
+      alert('Por favor, preencha os campos obrigatórios: nome, e-mail, WhatsApp e Instagram.');
+      return;
+    }
+    document.getElementById('success').style.display='block';
+    document.getElementById('success').scrollIntoView({behavior:'smooth',block:'center'});
+  }
+
+  document.querySelectorAll('a[href^="#"]').forEach(a=>{
+    a.addEventListener('click',e=>{
+      const t=document.querySelector(a.getAttribute('href'));
+      if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth'})}
+    });
+  });
+</script>
+</body>
+</html>
